@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#29b6f6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#29b6f6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#29b6f6">
+    <title>Share Address</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- ON-LOAD  -->
+    <script>
+        function Init() {
+            if (sessionStorage.apiAccessToken) {
+            } else {
+                location.href = "/";
+            }
+        }
+        Init();
+    </script>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/InputStyle.css" rel="stylesheet" />
+    <style>
+        #map {
+            /*display: flex;
+            flex-direction: column;
+            min-height: 100vh;*/
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="/" class="brand-logo">
+                Locate Me..!!
+                <!--<div class="row">
+                    <img id="Logo" class="col s4 offset-s4 m4" src="img/Logo_One.png" />
+                </div>-->
+
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li class="bold">
+                    <a href="#" class="btn_Logout">
+                        <i class="material-icons left">lock_open</i>Logout
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <li class="bold">
+                    <a href="#" class="waves-effect waves-orange btn_Logout">
+                        <i class="material-icons left">lock_open</i>Logout
+                    </a>
+                </li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+
+            <div id="Swipe-Container">
+                <div class="dragend-page">
+                    <div class="row">
+                        <div class="col s12 m10 offset-m1">
+                            <ul class="collapsible popout" data-collapsible="accordion">
+                                <li>
+                                    <div class="collapsible-header orange">
+                                        <div class="white-text"><i class="large material-icons">recent_actors</i>Personal Information</div>
+                                    </div>
+                                    <div class="collapsible-body" id="PersonalInformationDiv">
+                                        
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header orange">
+                                        <div class="white-text"><i class="large material-icons">place</i>Addresses</div>
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <table class="highlight">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id">Label</th>
+                                                    <th data-field="name">Address</th>
+                                                    <th data-field="price">Controls</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="AddressListTable">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="dragend-page">
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">
+                            <h3 class="header orange-text"> Add Address </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <i class="material-icons prefix">label</i>
+                            <input id="Add_Label" type="text">
+                            <label for="Add_Label">Address Label</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <input id="Add_Title" type="text">
+                            <label for="Add_Title">Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <input id="Add_Line1" type="text">
+                            <label for="Add_Line1">Line 1</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <input id="Add_Line2" type="text">
+                            <label for="Add_Line2">Line 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m2 offset-m3">
+                            <input id="Add_City" type="text">
+                            <label for="Add_City">City</label>
+                        </div>
+                        <div class="input-field col s12 m2">
+                            <input id="Add_State" type="text">
+                            <label for="Add_State">State</label>
+                        </div>
+                        <div class="input-field col s12 m2">
+                            <input id="Add_Zip" type="text">
+                            <label for="Add_Zip">Zip</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <input id="Add_Phone" type="text">
+                            <label for="Add_Phone">Phone</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">
+                            <nav class="orange">
+                                <div class="nav-wrapper">
+                                    <form>
+                                        <div class="input-field">
+                                            <input id="search" type="search" placeholder="Search for location" required>
+                                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                            <i class="material-icons" id="searchBar_BtnClose">close</i>
+                                        </div>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    <div id="map"></div>
+                                </div>
+                                <div class="card-action">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a class="col s12 m4 offset-m4 waves-effect waves-light btn orange" id="btn_Address">
+                            <i class="material-icons">cloud</i> &nbsp;Address
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating red" id="floatBtn_AddAddress"><i class="material-icons">playlist_add</i></a></li>
+            <li><a class="btn-floating yellow darken-1" id="floatBtn_ViewAddress"><i class="material-icons">toc</i></a></li>
+            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+    </div>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/dragend.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/Address.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDemYklSbTNEgibObq8RK4Dr8eSEZTXqxg&libraries=places&callback=InitMap"
+            async defer></script>
+</body>
+</html>

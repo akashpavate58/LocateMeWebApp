@@ -1,0 +1,52 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+#nav-mobile li a{
+    font-size: xx-large;
+    color: darkcyan;
+}
+
+#Logo {
+    /*width: 10%;
+    height: 10%;*/
+}
+.large.material-icons {
+    font-size: 30px;
+}
+
+#Swipe-Container {
+      display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#Addr-Desc {
+    font-size: x-large;
+}
+
+/*#qrImg {
+    height: 300px;
+    width: 300px;
+
+}
+#qr_Code {
+    width: 100%;
+    height: auto;
+    padding-left: 200px;
+}*/
