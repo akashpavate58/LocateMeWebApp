@@ -145,7 +145,7 @@ function RenderAddress(addr)
             <td><h5>'+ addr.Label +'</h5></td>\
             <td>' + RenderAddressText(addr.Address) + '</td>\
             <td><a class="btn-large orange" \
-                    href="http://addr.akashpavate.in/lookup.html?q=' + addr.Label + '"> Navigate </a></td>\
+                    href="./lookup.html?q=' + addr.Label + '"> Navigate </a></td>\
             </tr>';
 }
 function RenderAddressText(addr)

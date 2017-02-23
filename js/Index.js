@@ -6,7 +6,7 @@
         var text = $("#searchBar").val();
         console.log(text);
         if(text)
-            window.location.href = 'lookup.html?q=' + text;
+            window.location.href = './lookup.html?q=' + text;
     });
 
     $('#searchBar_Close').click(function() {
@@ -152,5 +152,5 @@ function onLoginSuccess(data) {
     sessionStorage.apiAccessToken = accessToken;
     sessionStorage.userName = username;
 
-    location.href = '/address.html';
+    location.href = './address.html';
 }
